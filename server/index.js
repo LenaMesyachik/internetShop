@@ -7,13 +7,19 @@ const models = require('./models/models')
 const cors  = require('cors')
 const {response, request} = require("express")
 const router = require('./routes/index')
-
+const errorHandler = require('./middleware/ErrorHandlingMiddleWare')
 
 
 const app = express()
 app.use(cors())
 app.use(express.json())
 app.use('/api', router)
+
+
+
+
+//идет последним - обработка ошибок
+app.use(errorHandler)
 
 /*app.get('/', (request, response) => {
     response.status(200).json({message:'WORKING!'})
