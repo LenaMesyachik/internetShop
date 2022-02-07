@@ -5,8 +5,19 @@ const sequelize = require('./db')
 const PORT = process.env.PORT || 5000
 const models = require('./models/models')
 const cors  = require('cors')
-const app = express()
+const {response, request} = require("express")
 
+
+
+
+const app = express()
+app.use(cors())
+app.use(express.json())
+
+
+/*app.get('/', (request, response) => {
+    response.status(200).json({message:'WORKING!'})
+})*/
 
 const start = async () => {
     try {
