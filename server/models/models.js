@@ -8,49 +8,56 @@ const User = sequelize.define('user', {
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: 'USER'},
 })
-const Backet = sequelize.define('user', {
+
+const Basket = sequelize.define('basket', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
-const BacketDevice = sequelize.define('user', {
+
+const BasketDevice = sequelize.define('basket_device', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 })
-const Rating = sequelize.define('user', {
+
+const Rating = sequelize.define('rating', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     rate: {type: DataTypes.INTEGER, allowNull:false},
 })
-const Device = sequelize.define('user', {
+
+const Device = sequelize.define('device', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull:false},
     price: {type: DataTypes.INTEGER, allowNull:false},
     rating: {type: DataTypes.INTEGER, defaultValue: 0},
     img: {type: DataTypes.STRING,allowNull:false},
 })
-const Type = sequelize.define('user', {
+
+const Type = sequelize.define('type', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull:false},
 })
-const Brand = sequelize.define('user', {
+
+const Brand = sequelize.define('brand', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull:false},
 })
-const DeviceInfo = sequelize.define('user', {
+
+const DeviceInfo = sequelize.define('device_info', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, allowNull:false},
+    title: {type: DataTypes.STRING, allowNull:false},
     description: {type: DataTypes.STRING, allowNull:false},
 })
 
-const TypeBrand = sequelize.define('type brand', {
+const TypeBrand = sequelize.define('type_brand', {
     id: {type: DataTypes.INTEGER, primaryKey:true, autoIncrement: true}
 })
 
-User.hasOne(Backet)
-Backet.belongsTo(User)
+User.hasOne(Basket)
+Basket.belongsTo(User)
 
 User.hasMany(Rating)
 Rating.belongsTo(User)
 
-Backet.hasMany(BacketDevice)
-BacketDevice.belongsTo(Backet)
+Basket.hasMany(BasketDevice)
+BasketDevice.belongsTo(Basket)
 
 Type.hasMany(Device)
 Device.belongsTo(Type)
@@ -61,17 +68,11 @@ Device.belongsTo(Brand)
 Device.hasMany(Rating)
 Rating.belongsTo(Device)
 
-Device.hasMany(Rating)
-Rating.belongsTo(Device)
-
-Device.hasMany(BacketDevice)
-BacketDevice.belongsTo(Device)
+Device.hasMany(BasketDevice)
+BasketDevice.belongsTo(Device)
 
 Device.hasMany(DeviceInfo)
-BacketDevice.belongsTo(Device)
-
-Device.hasMany(DeviceInfo)
-DeviceInfo.belongsTo(Device)
+BasketDevice.belongsTo(Device)
 
 Type.belongsToMany(Brand, {through: TypeBrand})
 Brand.belongsToMany(Type, {through:TypeBrand})
@@ -79,8 +80,8 @@ Brand.belongsToMany(Type, {through:TypeBrand})
 
 module.exports = {
     User,
-    Backet,
-    BacketDevice,
+    Basket,
+    BasketDevice,
     Device,
     Type,
     Brand,
