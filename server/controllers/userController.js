@@ -39,11 +39,8 @@ const {email, password} = request.body
 }
 
     async check (request, response, next) {
-const {id} = request.query
-        if (!id){
-           return next(ApiError.badRequest('не задан ID'))
-        }
-        response.json(id)
+const token = generateJwt(request.user.id, request.user.email,request.user.role)
+        response.response.json({token})
 }
 }
  module.exports = new UserController()
