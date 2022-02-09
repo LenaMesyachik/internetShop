@@ -1,5 +1,5 @@
 const Router = require('express')
-const router = new Router
+const router = new Router()
 const deviceController = require('../controllers/deviceController')
 
 
