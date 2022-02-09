@@ -4,18 +4,20 @@ const {log} = require("nodemon/lib/utils");
 const sequelize = require('./db')
 const PORT = process.env.PORT || 5000
 const models = require('./models/models')
-const cors  = require('cors')
+const cors = require('cors')
+const fileUpload = require('express-fileupload')
 const {response, request} = require("express")
 const router = require('./routes/index')
 const errorHandler = require('./middleware/ErrorHandlingMiddleWare')
+const path = require('path')
 
 
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(express.static(path.resolve(__dirname, 'static')))
+app.use(fileUpload({}))
 app.use('/api', router)
-
-
 
 
 //идет последним - обработка ошибок
@@ -27,10 +29,9 @@ app.use(errorHandler)
 
 const start = async () => {
     try {
-       await sequelize.authenticate()
+        await sequelize.authenticate()
         await sequelize.sync()
         app.listen(PORT, () => (`Server started on port ${PORT}`))
-
     } catch (e) {
         console.log(e)
     }
