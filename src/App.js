@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter} from "react-router-dom";
 import AppRouter from "./components/AppRouter";
+import Auth from "./pages/Auth";
 
 function App() {
     return (
@@ -8,7 +9,6 @@ function App() {
             <BrowserRouter>
                 <AppRouter/>
             </BrowserRouter>
-            working hard !!
         </div>
     );
 }
