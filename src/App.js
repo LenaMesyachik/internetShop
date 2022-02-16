@@ -8,7 +8,7 @@ function App() {
             <BrowserRouter>
                 <AppRouter/>
             </BrowserRouter>
-            working hard
+            working hard !
         </div>
     );
 }
