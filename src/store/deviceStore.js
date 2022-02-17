@@ -5,16 +5,18 @@ export default class DeviceStore {
         this._types = [
             {id: 1, name: 'холодильники'},
             {id: 2, name: 'смартфоны'}
-        ],
+        ]
 
-            this._brands = [
-                {id: 1, name: 'sumsung'},
-                {id: 2, name: 'apple'}
-            ],
-            this._devices = [
-                {id: 1, name: 'iphone12pro', price: 25000, rating: 5, img: ''},
-                {id: 2, name: 'iphone11pro', price: 20000, rating: 5, img: ''}
-            ]
+        this._brands = [
+            {id: 1, name: 'sumsung'},
+            {id: 2, name: 'apple'}
+        ]
+
+        this._devices = [
+            {id: 1, name: 'iphone12pro', price: 25000, rating: 5, img: ''},
+            {id: 2, name: 'iphone11pro', price: 20000, rating: 5, img: ''},
+            {id: 3, name: 'iphone10pro', price: 15000, rating: 5, img: ''}
+        ]
 
         makeAutoObservable(this)
     }
@@ -34,9 +36,11 @@ export default class DeviceStore {
     get types() {
         return this._types
     }
+
     get brands() {
         return this._brands
     }
+
     get devices() {
         return this._devices
     }
