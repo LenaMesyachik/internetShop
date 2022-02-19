@@ -4,6 +4,8 @@ import Basket from "./pages/Basket";
 import Shop from "./pages/Shop";
 import Auth from "./pages/Auth";
 import DevicePage from "./pages/DevicePage";
+import {Button, Container, Nav} from "react-bootstrap";
+import React from "react";
 
 export const authRoutes = [
     {
@@ -34,3 +36,5 @@ export const publicRoutes = [
     }
 
 ]
+
+
