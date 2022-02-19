@@ -1,7 +1,8 @@
 import React, {useContext} from 'react';
 import {Context} from "../index";
+import {Container, Nav, Navbar} from "react-bootstrap";
 
-const NavBar = () => {
+export function NavBar  ()  {
     const {user} = useContext(Context)
     return (
         <Navbar bg="dark" variant="dark">
@@ -18,4 +19,3 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
