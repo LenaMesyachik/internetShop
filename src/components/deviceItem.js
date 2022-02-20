@@ -27,5 +27,4 @@ const DeviceItem = ({device}) => {
 };
 
 export default DeviceItem;
-/*
-navigate('/path', { replace: true })*/
+
